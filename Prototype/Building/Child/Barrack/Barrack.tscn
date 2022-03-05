@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Utils/Attributes/Scripts/Res/Radius/AttrResRadius.gd" type="Script" id=1]
 [ext_resource path="res://Utils/Attributes/Scripts/Res/Stats/AttrResStats.gd" type="Script" id=2]
 [ext_resource path="res://Utils/Attributes/Scripts/Res/Primary/AttrResPrimary.gd" type="Script" id=3]
 [ext_resource path="res://Building/Building.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Building/Child/Barrack/Barrack.gd" type="Script" id=5]
 
 [sub_resource type="Resource" id=1]
 resource_local_to_scene = true
@@ -52,7 +53,8 @@ radius = 15.0
 [sub_resource type="CircleShape2D" id=6]
 resource_local_to_scene = true
 
-[node name="Barrack" instance=ExtResource( 4 )]
+[node name="Barrack" groups=["creep_spawner"] instance=ExtResource( 4 )]
+script = ExtResource( 5 )
 
 [node name="Attributes" parent="." index="0"]
 primary = SubResource( 1 )
@@ -69,7 +71,7 @@ offset = Vector2( 0, -24 )
 region_enabled = true
 region_rect = Rect2( 129, 64, 54, 56 )
 
-[node name="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D" parent="." index="5"]
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="UnitSelector" index="0"]

@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://BT/BehaviorTree.gd"
 }, {
+"base": "StaticBody2D",
+"class": "Building",
+"language": "GDScript",
+"path": "res://Building/Building.gd"
+}, {
 "base": "Reference",
 "class": "GSAIAgentLocation",
 "language": "GDScript",
@@ -219,6 +224,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIUtils.gd"
 }, {
+"base": "Line2D",
+"class": "Lane",
+"language": "GDScript",
+"path": "res://Battlefield/Lane.gd"
+}, {
 "base": "Area2D",
 "class": "Projectile",
 "language": "GDScript",
@@ -243,11 +253,6 @@ _global_script_classes=[ {
 "class": "StateRoot",
 "language": "GDScript",
 "path": "res://addons/xsm/state_root.gd"
-}, {
-"base": "CollisionShape2D",
-"class": "TilemapBrush",
-"language": "GDScript",
-"path": "res://Utils/TilemapBrush.gd"
 } ]
 _global_script_class_icons={
 "AttrRes": "",
@@ -263,6 +268,7 @@ _global_script_class_icons={
 "BTSequential": "res://BT/Icons/sequential.png",
 "BTSequentialRandom": "res://BT/Icons/random_sequential.png",
 "BehaviorTree": "",
+"Building": "",
 "GSAIAgentLocation": "",
 "GSAIArrive": "",
 "GSAIAvoidCollisions": "",
@@ -292,12 +298,12 @@ _global_script_class_icons={
 "GSAISteeringBehavior": "",
 "GSAITargetAcceleration": "",
 "GSAIUtils": "",
+"Lane": "",
 "Projectile": "",
 "Skill": "",
 "SkillHandler": "",
 "State": "",
-"StateRoot": "",
-"TilemapBrush": ""
+"StateRoot": ""
 }
 
 [application]

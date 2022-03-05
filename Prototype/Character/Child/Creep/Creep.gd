@@ -1,5 +1,7 @@
 extends "res://Character/Character.gd"
 
+var lane: Lane
+var current_lane_point = 1
 
 
 func _ready():

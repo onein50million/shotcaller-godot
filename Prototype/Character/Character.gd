@@ -147,6 +147,8 @@ func _setup_face_direction(target_position: Vector2) -> void:
 		return
 	texture_container.scale.x = 1
 
+func set_speed_multiplier(multiplier):
+	ai_agent.linear_speed_max = attributes.stats.move_speed * multiplier
 
 func _setup_ai_agent() -> void:
 	ai_agent.linear_speed_max = attributes.stats.move_speed

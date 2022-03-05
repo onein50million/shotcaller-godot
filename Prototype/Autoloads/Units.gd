@@ -35,18 +35,7 @@ func spawn_one(team: int, packed_scene: PackedScene, parent_node: Node2D, spawn_
 
 
 func try_spawn_creep_wave(parent_node: Node2D) -> void:
-	for t in arena_teams.keys():
-		var new_creep_group: YSort = null
-		if creep_group_pool_count < creep_group_max_pool_count and not creep_group_pool_count > creep_group_max_pool_count:
-			new_creep_group = spawn_one(t, CreepGroupClass, parent_node, arena_teams[t].mid_creep_spawner_position)
-			creep_group_pool_count += 2
-		else:
-			new_creep_group = available_creep_groups_pools.pop_front()
-
-		
-		if new_creep_group:
-			new_creep_group.mirror_mode = arena_teams[t].mirror_mode
-			new_creep_group.spawn()
+	get_tree().call_group("creep_spawner", "spawn_creep_wave", parent_node)
 
 func get_closest_units_by(node: Node2D, sort_type: int, units: Array) -> Array:
 	var data_units = []
@@ -165,7 +154,7 @@ func get_allies(node: Node2D, current_team: int, current_type: int, target_types
 	return allies
 	
 
-func get_enemies(node: Node2D, current_team: int, current_type: int, target_types: PoolIntArray = [], detection_type: int = DetectionTypeID.Area, radius: float = 1000) -> Array:
+func get_enemies(node: Node2D, current_team: int, current_type: int, target_types: PoolIntArray = [], detection_type: int = DetectionTypeID.Area, radius: float = 1000, target_lane: Lane = null) -> Array:
 	var enemies: Array = []
 
 	match current_team:
@@ -193,6 +182,8 @@ func get_enemies(node: Node2D, current_team: int, current_type: int, target_type
 	var filtered_enemies = []
 	if not target_types.empty():
 		for i in range(enemies.size()):
+			if is_instance_valid(target_lane) and "lane" in enemies[i] and enemies[i].lane != target_lane:
+				continue
 			if enemies[i].attributes.primary.unit_type in target_types:
 				filtered_enemies.append(enemies[i])
 		return filtered_enemies
